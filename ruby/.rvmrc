@@ -1,0 +1,2 @@
+rvm_make_flags="-j 8"
+export rvm_path="/export/home/gibheer/.rvm"

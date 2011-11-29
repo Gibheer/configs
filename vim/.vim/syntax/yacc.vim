@@ -1,22 +1,12 @@
 " Vim syntax file
 " Language:	Yacc
 " Maintainer:	Charles E. Campbell, Jr. <NdrOchipS@PcampbellAfamily.Mbiz>
-" Last Change:	Aug 12, 2010
-" Version:	9
+" Last Change:	Aug 2, 2010
+" Version:	8
 " URL:	http://mysite.verizon.net/astronaut/vim/index.html#vimlinks_syntax
 "
 " Options: {{{1
 "   g:yacc_uses_cpp : if this variable exists, then C++ is loaded rather than C
-"
-" Overall layout of a bison/yacc grammer:
-"   %{
-"    Prolog
-"   %}
-"   Bison/Yacc Declarations
-"   %%
-"   Grammar Rules
-"   %%
-"   Epilogue
 
 " ---------------------------------------------------------------------
 " this version of syntax/yacc.vim requires 6.0 or later
@@ -45,7 +35,7 @@ endif
 
 " ---------------------------------------------------------------------
 "  Yacc Clusters: {{{1
-syn cluster yaccInitCluster	contains=yaccKey,yaccKeyActn,yaccBrkt,yaccType,yaccString,yaccUnionStart,yaccHeader2,yaccComment,yaccDefines,yaccParseParam,yaccParseOption
+syn cluster yaccInitCluster	contains=yaccKey,yaccKeyActn,yaccBrkt,yaccType,yaccString,yaccUnionStart,yaccHeader2,yaccComment,yaccDefines,yaccParseParam
 syn cluster yaccRulesCluster	contains=yaccNonterminal,yaccString
 
 " ---------------------------------------------------------------------
@@ -60,8 +50,7 @@ HiFold syn	region	yaccEndCode	matchgroup=yaccSectionSep	start='^%%$'		end='\%$'	
 " ---------------------------------------------------------------------
 " Yacc Commands: {{{1
 syn	match	yaccDefines	'^%define\s\+.*$'
-syn	match	yaccParseParam	'%\(parse\|lex\)-param\>'		skipwhite	nextgroup=yaccParseParamStr
-syn	match	yaccParseOption '%\%(api\.pure\|pure-parser\|locations\|error-verbose\)\>'
+syn	match	yaccParseParam	'%parse-param\>'	skipwhite	nextgroup=yaccParseParamStr
 syn	region	yaccParseParamStr	contained matchgroup=Delimiter	start='{'	end='}'	contains=cStructure
 
 syn	match	yaccDelim	"[:|]"	contained
@@ -107,8 +96,7 @@ if !exists("did_yacc_syn_inits")
   HiLink yaccCurly	Delimiter
   HiLink yaccCurlyError	Error
   HiLink yaccDefines	cDefine
-  HiLink yaccParseParam	yaccParseOption
-  HiLink yaccParseOption	cDefine
+  HiLink yaccParseParam	cDefine
   HiLink yaccNonterminal	Function
   HiLink yaccDelim	Delimiter
   HiLink yaccKeyActn	Special

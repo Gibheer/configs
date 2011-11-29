@@ -1,13 +1,10 @@
 " Vim syntax file
 " Language:	Groovy
-" Original Author:	Alessio Pace <billy.corgan@tiscali.it>
-" Maintainer:	Tobias Rapp <yahuxo@gmx.de>
-" Version: 	0.1.10
+" Maintainer:	Alessio Pace <billy.corgan@tiscali.it>
+" Version: 	0.1.9b
 " URL:	  http://www.vim.org/scripts/script.php?script_id=945	
-" Last Change:	2010 Nov 29
+" Last Change:	6/4/2004
 
-" THE ORIGINAL AUTHOR'S NOTES:
-"
 " This is my very first vim script, I hope to have
 " done it the right way.
 " 
@@ -19,7 +16,8 @@
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 "
-" HOWTO USE IT (INSTALL) when not part of the distribution:
+" HOWTO USE IT (INSTALL):
+" [groovy is still not recognized by vim! :-( ]
 "
 " 1) copy the file in the (global or user's $HOME/.vim/syntax/) syntax folder
 " 
@@ -249,9 +247,7 @@ syn match   groovySpecialError     contained "\\."
 syn match   groovySpecialCharError contained "[^']"
 syn match   groovySpecialChar      contained "\\\([4-9]\d\|[0-3]\d\d\|[\"\\'ntbrf]\|u\x\{4\}\)"
 syn region  groovyString          start=+"+ end=+"+ end=+$+ contains=groovySpecialChar,groovySpecialError,@Spell,groovyELExpr
-syn region  groovyString          start=+'+ end=+'+ end=+$+ contains=groovySpecialChar,groovySpecialError,@Spell
-syn region  groovyString          start=+"""+ end=+"""+ contains=groovySpecialChar,groovySpecialError,@Spell,groovyELExpr
-syn region  groovyString          start=+'''+ end=+'''+ contains=groovySpecialChar,groovySpecialError,@Spell
+syn region  groovyString          start=+'+ end=+'+ end=+$+ contains=groovySpecialChar,groovySpecialError,@Spell,groovyELExpr
 " syn region groovyELExpr start=+${+ end=+}+ keepend contained
  syn match groovyELExpr /\${.\{-}}/ contained
 GroovyHiLink groovyELExpr Identifier

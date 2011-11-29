@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:	Lex
 " Maintainer:	Charles E. Campbell, Jr. <NdrOchipS@PcampbellAfamily.Mbiz>
-" Last Change:	Nov 01, 2010
-" Version:	12
+" Last Change:	Sep 11, 2009
+" Version:	10
 " URL:	http://mysite.verizon.net/astronaut/vim/index.html#vimlinks_syntax
 "
 " Option:
@@ -36,9 +36,6 @@ endif
 " --- Lex stuff ---
 " --- ========= ---
 
-" Options Section
-syn match lexOptions '^%\s*option\>.*$' contains=lexPatString
-
 "I'd prefer to use lex.* , but vim doesn't handle forward definitions yet
 syn cluster lexListGroup		contains=lexAbbrvBlock,lexAbbrv,lexAbbrv,lexAbbrvRegExp,lexInclude,lexPatBlock,lexPat,lexBrace,lexPatString,lexPatTag,lexPatTag,lexPatComment,lexPatCodeLine,lexMorePat,lexPatSep,lexSlashQuote,lexPatCode,cInParen,cUserLabel,cOctalZero,cCppSkip,cErrInBracket,cErrInParen,cOctalError,cCppOut2,cCommentStartError,cParenError
 syn cluster lexListPatCodeGroup	contains=lexAbbrvBlock,lexAbbrv,lexAbbrv,lexAbbrvRegExp,lexInclude,lexPatBlock,lexPat,lexBrace,lexPatTag,lexPatTag,lexPatTagZoneStart,lexPatComment,lexPatCodeLine,lexMorePat,lexPatSep,lexSlashQuote,cInParen,cUserLabel,cOctalZero,cCppSkip,cErrInBracket,cErrInParen,cOctalError,cCppOut2,cCommentStartError,cParenError
@@ -64,15 +61,13 @@ endif
 
 "%% : Patterns {Actions}
 if has("folding")
- syn region lexPatBlock	fold matchgroup=Todo	start="^%%$" matchgroup=Todo	end="^%%$"	skipnl	skipwhite	contains=lexPatTag,lexPatTagZone,lexPatComment,lexPat,lexPatInclude
+ syn region lexPatBlock	fold matchgroup=Todo	start="^%%$" matchgroup=Todo	end="^%%$"	skipnl skipwhite	contains=lexPatTag,lexPatTagZone,lexPatComment,lexPat
  syn region lexPat		fold			start=+\S+ skip="\\\\\|\\."	end="\s"me=e-1		contained nextgroup=lexMorePat,lexPatSep contains=lexPatTag,lexPatString,lexSlashQuote,lexBrace
- syn region lexPatInclude	fold matchgroup=lexSep	start="^%{"	end="%}"	contained	contains=lexPatCode
  syn region lexBrace	fold			start="\[" skip=+\\\\\|\\+	end="]"			contained
  syn region lexPatString	fold matchgroup=String	start=+"+	skip=+\\\\\|\\"+	matchgroup=String end=+"+	contained
 else
- syn region lexPatBlock	matchgroup=Todo		start="^%%$" matchgroup=Todo	end="^%%$"	skipnl	skipwhite	contains=lexPatTag,lexPatTagZone,lexPatComment,lexPat,lexPatInclude
+ syn region lexPatBlock	matchgroup=Todo		start="^%%$" matchgroup=Todo	end="^%%$"	skipnl skipwhite	contains=lexPatTag,lexPatTagZone,lexPatComment,lexPat
  syn region lexPat					start=+\S+ skip="\\\\\|\\."	end="\s"me=e-1		contained nextgroup=lexMorePat,lexPatSep contains=lexPatTag,lexPatString,lexSlashQuote,lexBrace
- syn region lexPatInclude	matchgroup=lexSep		start="^%{"	end="%}"	contained	contains=lexPatCode
  syn region lexBrace				start="\[" skip=+\\\\\|\\+	end="]"			contained
  syn region lexPatString	matchgroup=String		start=+"+	skip=+\\\\\|\\"+	matchgroup=String end=+"+	contained
 endif
@@ -122,7 +117,6 @@ hi def link lexAbbrvRegExp	Macro
 hi def link lexAbbrv	SpecialChar
 hi def link lexCFunctions	Function
 hi def link lexMorePat	SpecialChar
-hi def link lexOptions	PreProc
 hi def link lexPatComment	Comment
 hi def link lexPat		Function
 hi def link lexPatString	Function

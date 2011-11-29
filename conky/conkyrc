@@ -1,0 +1,17 @@
+update_interval 5
+background 1
+own_window yes
+alignment top_middle
+double_buffer yes
+own_window_transparent no
+own_window_type panel
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager
+use_spacer none
+maximum_width 1920
+minimum_size 1918 10
+gap_y 0
+use_xft yes
+xftfont dejavu sans mono:size=7
+
+TEXT
+  ${color F08000}${time %H:%M - %d/%m/%y} ${alignr 10} battery: ${color D7D3C5}${battery}-${battery_time}

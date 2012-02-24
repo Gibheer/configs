@@ -9,6 +9,7 @@ set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 colorscheme mustang             " load the mustang colorscheme
 set number                      " activate line numbers
+set t_Co=256                    " set 256 colors as everything supports it
 set scrolloff=9999              " show as much context as possible
 set history=500                 " keep 5000 lines of commands
 

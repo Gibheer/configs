@@ -10,3 +10,6 @@
 [submodule "vim/bundle/git-javascript"]
 	path = vim/bundle/git-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git

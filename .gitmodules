@@ -16,3 +16,9 @@
 [submodule "vim/bundle/vim-padrino"]
 	path = vim/bundle/vim-padrino
 	url = https://github.com/gerardc/vim-padrino.git
+[submodule "vim/bundle/vim-ruby"]
+	path = vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/bundle/vim-clojure"]
+	path = vim/bundle/vim-clojure
+	url = https://github.com/vim-scripts/VimClojure.git

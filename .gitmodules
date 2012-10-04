@@ -22,3 +22,6 @@
 [submodule "vim/bundle/vim-clojure"]
 	path = vim/bundle/vim-clojure
 	url = https://github.com/vim-scripts/VimClojure.git
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git

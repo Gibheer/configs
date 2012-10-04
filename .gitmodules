@@ -13,9 +13,6 @@
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "vim/bundle/vim-padrino"]
-	path = vim/bundle/vim-padrino
-	url = https://github.com/gerardc/vim-padrino.git
 [submodule "vim/bundle/vim-ruby"]
 	path = vim/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git

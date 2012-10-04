@@ -2,34 +2,24 @@ source ~/.profile
 
 autoload -Uz compinit
 autoload colors ; colors
-autoload zmv
+autoload -U edit-command-line
 
 compinit
 
 HISTFILE=~/.histfile
-HISTSIZE=20000
-SAVEHIST=2000
+HISTSIZE=900000
+SAVEHIST=200000
 setopt appendhistory nomatch
 unsetopt autocd beep extendedglob notify
 
+# set line editing to vim
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 alias su='su -'
-alias tmux='tmux -u2'
 alias ls='ls -G'
 alias nano='nano -w'
-alias dir_to_lower="zmv -Qv '(**/)(*)(.D)' '$1${(L)2}'"
-alias top='top -CaIiP'
-# hg shortcuts
-alias hc='hg commit'
-alias hl='hg log -l 3'
-alias hs='hg status'
-#git shortcuts
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gd='git diff'
-alias gl='git log -3'
-alias gs='git status'
-alias ga='git add'
-alias git_strip='git reset --hard HEAD^'
+alias ls='ls --color'
 
 PS1="$(print '%{\e[1;30m%}[%{\e[1;31m%}%n%{\e[1;30m%}-%{\e[1;31m%}%m%{\e[1;30m%}]%{\e[1;31m%} %~ %{\e[0m%}')"
 RPS1="$(print '%{\e[1;30m%}[%{\e[1;31m%}%*%{\e[1;30m%}]%{\e[0m%}')"
@@ -41,3 +31,10 @@ bindkey -v '^[[1~' beginning-of-line
 bindkey -v '^[OH' beginning-of-line
 bindkey -v '^[[5~' history-beginning-search-backward
 bindkey -v '^[[6~' history-beginning-search-forward
+bindkey -v '^R' history-incremental-search-backward
+bindkey -v '^T' history-incremental-search-forward
+bindkey -v '^[^?' backward-delete-word
+
+if [ "$TERM" = "xterm" ]; then
+  export TERM="xterm-256color"
+fi

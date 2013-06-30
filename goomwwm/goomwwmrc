@@ -1,0 +1,30 @@
+focusmode sloppy
+
+# vim keybindings
+focusleft h
+focusdown j
+focusup k
+focusright l
+
+rule "gnome-terminal tag1"
+rule "chromium tag2,maximize"
+rule "thunderbird tag3,maximize"
+rule "empathy tag4"
+1 gnome-terminal
+2 chromium
+3 thunderbird
+4 empathy
+auto chromium
+auto thunderbird
+auto empathy
+exec gnome-terminal
+exec gnome-terminal
+
+# start needed stuff
+exec xsetroot -solid black
+exec xsetroot -cursor_name left_ptr
+exec bash ~/monitor.sh
+exec xautolock -time 2 -locker slock -killer "systemctl suspend" -killtime 10
+exec trayer --SetPartialStrut false --expand true --widthtype request --transparent true --alpha 255 --edge top --align right
+exec nm-applet
+exec conky

@@ -4,16 +4,36 @@
 \set PROMPT1 '%[%033[1;33m%]%`date +%H:%M:%S` %[%033[1;33m%]%x%[%033[1;34m%]%n%[%033[1;30m%]-%[%033[1;34m%]%M%[%033[1;30m%]/%[%033[1;34m%]%~%[%033[1;33m%]%R%[%033[0m%] '
 \set PROMPT2 '%[%033[1;33m%]%R>%[%033[0m%] '
 \set PROMPT3 '%[%033[1;33m>>%[%033[0m%] '
-\set HISTFILE ~/.psql_history-:DBNAME
+\set HISTFILE ~/psqllogs/psql_history-:HOST
+\set AUTOCOMMIT off
 \pset null ¤
 \pset linestyle unicode
 \pset border 1
 \pset pager always
 
-\set pl 'select datname db,usename as user,application_name appname, client_addr, state_change, state, waiting as wait from pg_stat_activity where state != ''idle''';
-\set plx 'select datname db,usename as user,application_name appname, client_addr, state_change, state, waiting wait, query from pg_stat_activity where state != ''idle''';
-\set pcounti 'select count(1) processes from pg_stat_activity;'
+\echo 'Possible commands:'
+\echo '  :menu       show this screen'
+\echo '  :pl         active processes'
+\echo '  :plx        active processes and their current statement'
+\echo '  :pli        show non active transactions'
+\echo '  :plix       show non active transactions with their last statement'
+\echo '  :plw        show waiting transactions'
+\echo '  :pcounti    count all processes'
+\echo '  :pcount     count active processes'
+\echo '  :pcount_by_state  count the processes by state'
+\echo '  :blocked    show blocked transactions'
+
+\set menu '\\i ~/.psqlrc'
+
+\set pl 'select datname db,usename as user,application_name appname, client_addr, state_change, waiting as wait from pg_stat_activity where state != ''idle''';
+\set plx 'select datname db,usename as user,application_name appname, client_addr, state_change, waiting wait, query from pg_stat_activity where state != ''idle''';
+\set pli 'select datname db, usename as user, application_name appname, client_addr, state_change from pg_stat_activity where state = ''idle'';'
+\set plix 'select datname db, usename as user, application_name appname, client_addr, state_change, query from pg_stat_activity where state = ''idle'';'
+\set plw 'select datname db, usename as user, application_name appname, client_addr, state_change, waiting wait, query from pg_stat_activity where waiting;'
 \set pcount 'select count(1) processes from pg_stat_activity where state <> ''idle'';'
+\set pcounti 'select count(1) processes from pg_stat_activity;'
 \set pcount_by_state 'select state, count(1) from pg_stat_activity group by state;'
+
+\set blocked 'SELECT bl.pid AS blocked_pid, a.usename AS blocked_user, kl.pid AS blocking_pid, ka.usename AS blocking_user, a.query AS blocked_statement, ka.query as blocking_query FROM pg_catalog.pg_locks bl JOIN pg_catalog.pg_stat_activity a ON bl.pid = a.pid JOIN pg_catalog.pg_locks kl JOIN pg_catalog.pg_stat_activity ka ON kl.pid = ka.pid ON bl.transactionid = kl.transactionid AND bl.pid != kl.pid WHERE NOT bl.granted;'
 
 \set QUIET 0

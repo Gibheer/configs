@@ -1,22 +1,27 @@
 #!/bin/bash
 
 # this is a simple config for herbstluftwm
-
 function hc() {
     herbstclient "$@"
 }
 
-xsetroot -solid '#5A8E3A'
-
+xsetroot -solid black
+xsetroot -cursor_name left_ptr
+xset -b
+xmodmap .Xmodmap
+bash ~/monitor.sh
 
 # keybindings
 Mod=Mod4
 hc keybind $Mod-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Return spawn gnome-terminal
+hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-x spawn dmenu_run -i -b -nb '#121212' -nf '#dedede' -sb '#232323' -sf '#f08000'
-hc keybind Control+Mod1+L slock
+hc keybind Ctrl-Alt-l spawn xautolock -locknow
+hc keybind Ctrl-Alt-s spawn $HOME/bin/monitor 0
+hc keybind Ctrl-Alt-d spawn $HOME/bin/monitor 1
+hc keybind Ctrl-Alt-p spawn $HOME/bin/hc-setup
 
 # tags
 TAG_NAMES=( {1..9} )
@@ -70,7 +75,7 @@ hc keybind $Mod-Shift-l shift right
 
 # layout
 # make a top padding
-hc pad 0 20
+hc pad 0 15
 
 # colors
 hc set frame_border_active_color '#dd0000'
@@ -79,6 +84,7 @@ hc set frame_bg_normal_color '#BD9768'
 hc set frame_bg_active_color '#BD8541'
 hc set frame_border_width 1
 hc set window_border_width 0
+hc set window_gap 0
 hc set window_border_normal_color '#AE8451'
 hc set window_border_active_color '#F6FF00'
 
@@ -95,3 +101,10 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 # start conky
 killall conky
 conky
+
+# start the authentication deamon
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# start the automatic screen lock
+xautolock -time 2 -locker slock -killer "systemctl suspend" -killtime 20 &
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &

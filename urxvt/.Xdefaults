@@ -1,39 +1,50 @@
-URxvt*scrollBar:  false
+# needs urxvt-perls
+URxvt.perl-ext-common:  default,url-select
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+
+URxvt.scrollBar:  false
 # fix pos1 and end
-URxvt*keysym.Home: \033[1~
-URxvt*keysym.End: \033[4~
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
 
-URxvt*font: xft:Monospace:pixelsize=12;antialias=true;hinting=true
-URxvt*boldFont: xft:Monospace:bold:pixelsize=12;antialias=true;hinting=true
-URxvt*italicFont: xft:Monospace:italic:pixelsize=12;antialias=true;hinting=true
+URxvt.font: xft:Monospace:pixelsize=12;antialias=true;hinting=true
+URxvt.boldFont: xft:Monospace:bold:pixelsize=12;antialias=true;hinting=true
+URxvt.italicFont: xft:Monospace:italic:pixelsize=12;antialias=true;hinting=true
 
-URxvt*saveLines:  65000
+URxvt.saveLines:  65000
 
 # black
-URxvt*color0:   #050505
-URxvt*color8:   #404040
+URxvt.color0:   #050505
+URxvt.color8:   #404040
 # red
-URxvt*color1:   #d93245
-URxvt*color9:   #ff4040
+URxvt.color1:   #d93245
+URxvt.color9:   #ff4040
 # green
-URxvt*color2:   #6fed00
-URxvt*color10:  #8bff17
+URxvt.color2:   #6fed00
+URxvt.color10:  #8bff17
 # yellow/orange
-URxvt*color3:   #ffb300
-URxvt*color11:  #ffbf00
+URxvt.color3:   #ffb300
+URxvt.color11:  #ffbf00
 # blue
-URxvt*color4:   #1204ff
-URxvt*color12:  #50a7f2
+URxvt.color4:   #1204ff
+URxvt.color12:  #50a7f2
 # magenta (or whatever pink it is)
-URxvt*color5:   #cb00fe
-URxvt*color13:  #e88cff
+URxvt.color5:   #cb00fe
+URxvt.color13:  #e88cff
 # cyan
-URxvt*color6:   #00fffb
-URxvt*color14:  #7afffd
+URxvt.color6:   #00fffb
+URxvt.color14:  #7afffd
 # white
-URxvt*color7:   #aaaaaa
-URxvt*color15:  #ffffff
+URxvt.color7:   #aaaaaa
+URxvt.color15:  #ffffff
 
-URxvt*transparent: false
-URxvt*foreground: 7
-URxvt*background: 0
+URxvt.transparent: true
+URxvt.shading: 25
+URxvt.foreground: 7
+URxvt.background: 0
+URxvt.colorUL:    12

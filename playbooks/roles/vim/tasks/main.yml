@@ -4,15 +4,15 @@
         state=directory
         force=yes
 
-- name: setup bundle directory
-  file: dest=~/.vim/bundle
+- name: setup sub directories
+  file: dest=~/.vim/{{ item }}
         state=directory
         force=yes
-
-- name: setup color directory
-  file: dest=~/.vim/colors
-        state=directory
-        force=yes
+  with_items:
+    - bundle
+    - colors
+    - _temp
+    - _backup
 
 - name: install vimrc
   copy: src=vimrc

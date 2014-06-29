@@ -1,3 +1,7 @@
 ---
 - name: Clone/Update config directory
   git: repo=https://github.com/Gibheer/configs.git dest=~/configs
+
+- name: gemrc
+  copy: content='gem: --no-ri --no-rdoc'
+        dest=~/.gemrc

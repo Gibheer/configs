@@ -1,0 +1,9 @@
+---
+- name: install psqlrc
+  copy: src=psqlrc
+        dest=~/.psqlrc
+
+- name: create psql history directory
+  file: dest=~/psqllogs
+        state=directory
+        force=yes

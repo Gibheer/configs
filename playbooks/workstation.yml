@@ -1,5 +1,6 @@
 - hosts: targets
   roles:
     - vim
+    - psql
   tasks:
     - include: tasks/dotfiles.yml

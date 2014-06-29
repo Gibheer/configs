@@ -3,5 +3,7 @@
     ansible_python_interpreter: /usr/local/bin/python2.7
   roles:
     - vim
+    - psql
+    - tmux
   tasks:
     - include: tasks/dotfiles.yml

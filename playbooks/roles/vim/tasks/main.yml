@@ -1,0 +1,39 @@
+---
+- name: setup vim directory
+  file: dest=~/.vim
+        state=directory
+        force=yes
+
+- name: setup bundle directory
+  file: dest=~/.vim/bundle
+        state=directory
+        force=yes
+
+- name: setup color directory
+  file: dest=~/.vim/colors
+        state=directory
+        force=yes
+
+- name: install vimrc
+  copy: src=vimrc
+        dest=~/.vimrc
+
+- name: install color schema
+  copy: src=mustang.vim
+        dest=~/.vim/colors/mustang.vim
+
+- name: clone plugin directories
+  git: repo=https://github.com/{{ item }}.git
+       dest={{ vim_bundle_path }}/{{ item.split('/')|last }}
+       depth=1
+  with_items:
+    - tpope/vim-pathogen
+    - kien/ctrlp.vim
+    - jnwhiteh/vim-golang
+    - jelera/vim-javascript-syntax
+    - cakebaker/scss-syntax.vim
+    - tpope/vim-endwise
+    - tpope/vim-haml
+    - tpope/vim-markdown
+    - vim-ruby/vim-ruby
+    - slim-template/vim-slim

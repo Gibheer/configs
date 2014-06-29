@@ -1,0 +1,5 @@
+- hosts: targets
+  roles:
+    - vim
+  tasks:
+    - include: tasks/dotfiles.yml

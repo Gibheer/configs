@@ -1,5 +1,6 @@
 " start pathogen to manage the plugins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " global settings
 set nocompatible

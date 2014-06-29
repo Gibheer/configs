@@ -1,0 +1,4 @@
+---
+- name: install config
+  copy: src=gemrc
+        dest=~/.gemrc

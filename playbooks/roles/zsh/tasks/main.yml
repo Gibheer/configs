@@ -27,4 +27,5 @@
         src=profile.d/{{ item }}
   with_items:
     - alias_linux
+    - env_linux
   when: "ansible_system == 'Linux'"

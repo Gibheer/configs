@@ -1,2 +1,5 @@
-[targets]
-localhost ansible_connection=local
+[freebsd]
+localhost ansible_connnection=local ansible_python_interpreter=/usr/local/bin/python2.7
+
+[linux]
+localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python2.7

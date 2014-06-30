@@ -7,4 +7,4 @@ if [ -z "$SSH_AGENT_PID" ]; then
   ssh-add
 else
   ssh-add -l
-f
+fi

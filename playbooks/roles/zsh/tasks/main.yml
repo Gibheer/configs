@@ -7,12 +7,24 @@
   file: dest={{ profile_dir }}
         state=directory
 
-- name: install alias files for freebsd
-  copy: dest={{ profile_dir }}/alias_freebsd
-        src=profile.d/alias_freebsd
+- name: install default profile files
+  copy: dest={{ profile_dir }}/{{ item }}
+        src=profile.d/{{ item }}
+  with_items:
+    - env
+    - ssh_agent
+
+- name: install profile files for freebsd
+  copy: dest={{ profile_dir }}/{{ item }}
+        src=profile.d/{{ item }}
+  with_items:
+    - alias_freebsd
+    - env_freebsd
   when: "ansible_system == 'FreeBSD'"
 
-- name: install alias files for linux
-  copy: dest={{ profile_dir }}/alias_freebsd
-        src=profile.d/alias_freebsd
+- name: install profile files for linux
+  copy: dest={{ profile_dir }}/{{ item }}
+        src=profile.d/{{ item }}
+  with_items:
+    - alias_linux
   when: "ansible_system == 'Linux'"

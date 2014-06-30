@@ -1,9 +1,8 @@
-- hosts: targets
-  vars:
-    ansible_python_interpreter: /usr/local/bin/python2.7
+- hosts: freebsd
   roles:
     - vim
     - psql
     - tmux
+    - zsh
   tasks:
     - include: tasks/dotfiles.yml

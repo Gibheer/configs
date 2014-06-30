@@ -1,0 +1,18 @@
+---
+- name: install default config
+  copy: src=zshrc
+        dest=~/.zshrc
+
+- name: create profile directory
+  file: dest={{ profile_dir }}
+        state=directory
+
+- name: install alias files for freebsd
+  copy: dest={{ profile_dir }}/alias_freebsd
+        src=profile.d/alias_freebsd
+  when: "ansible_system == 'FreeBSD'"
+
+- name: install alias files for linux
+  copy: dest={{ profile_dir }}/alias_freebsd
+        src=profile.d/alias_freebsd
+  when: "ansible_system == 'Linux'"

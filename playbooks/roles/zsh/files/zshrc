@@ -1,5 +1,3 @@
-source ~/.profile
-
 autoload -Uz compinit
 autoload colors ; colors
 autoload -U edit-command-line

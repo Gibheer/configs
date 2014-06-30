@@ -5,7 +5,7 @@
 
 - name: make sure ~/.profile does not exist
   file: dest=~/.profile
-        state=abesent
+        state=absent
 
 - name: create profile directory
   file: dest={{ profile_dir }}

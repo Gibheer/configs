@@ -1,0 +1,4 @@
+---
+- name: install config
+  copy: dest=~/.conkyrc
+        src=conkyrc

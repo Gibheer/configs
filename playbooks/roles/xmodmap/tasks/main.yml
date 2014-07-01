@@ -1,0 +1,4 @@
+---
+- name: install config
+  copy: dest=~/.Xmodmap
+        src=Xmodmap

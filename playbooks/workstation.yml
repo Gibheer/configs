@@ -4,6 +4,7 @@
   roles:
     - psql
     - vim
+    - xmodmap
     - zsh
   tasks:
     - include: tasks/dotfiles.yml

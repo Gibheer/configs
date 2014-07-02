@@ -6,6 +6,7 @@
     - psql
     - vim
     - xmodmap
+    - xorg
     - zsh
   tasks:
     - include: tasks/dotfiles.yml

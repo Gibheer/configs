@@ -1,0 +1,4 @@
+---
+- name: install Xdefaults
+  copy: dest=~/.Xdefaults
+        src=Xdefaults

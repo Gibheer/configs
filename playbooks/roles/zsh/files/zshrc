@@ -20,7 +20,9 @@ RPS1="$(print '%{\e[1;30m%}[%{\e[1;31m%}%*%{\e[1;30m%}]%{\e[0m%}')"
 bindkey -v '^[[3~' delete-char
 bindkey -v '^[[4~' end-of-line
 bindkey -v '^[OF' end-of-line
+bindkey -v '^[[F' end-of-line
 bindkey -v '^[[1~' beginning-of-line
+bindkey -v '^[[H' beginning-of-line
 bindkey -v '^[OH' beginning-of-line
 bindkey -v '^[[5~' history-beginning-search-backward
 bindkey -v '^[[6~' history-beginning-search-forward

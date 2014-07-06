@@ -1,0 +1,5 @@
+# needs xsetroot, xset and xmodmap installed
+xsetroot -solid black
+xsetroot -cursor_name left_ptr
+xset -b
+xmodmap .Xmodmap

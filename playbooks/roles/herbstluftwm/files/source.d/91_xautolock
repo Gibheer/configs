@@ -1,0 +1,3 @@
+# needs xautolock to work
+# find keybindings in 80_keybindings
+xautolock -time 2 -locker "i3lock --color 111111" -killer "systemctl suspend" -killtime 20 &

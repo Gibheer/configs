@@ -1,0 +1,16 @@
+# manage herbstluftwm
+hc keybind $Mod-q quit
+hc keybind $Mod-Shift-r reload
+
+# start programs
+
+# start terminal
+hc keybind $Mod-Return spawn roxterm
+
+# start program runner
+#hc keybind $Mod-x spawn dmenu_run -i -b -nb '#121212' -nf '#dedede' -sb '#232323' -sf '#f08000'
+hc keybind $Mod-x spawn rofi -rnow -bg '#222222' -fg '#a4a4a4' -hlbg '#770000'
+
+# lock screen
+hc keybind Ctrl-Alt-l spawn xautolock -locknow
+hc keybind Ctrl-Alt-k spawn xautolock -toggle

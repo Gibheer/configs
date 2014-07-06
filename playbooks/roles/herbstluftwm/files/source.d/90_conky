@@ -1,0 +1,6 @@
+# make a top padding for conky
+hc pad 0 15
+
+# start conky
+killall conky
+conky

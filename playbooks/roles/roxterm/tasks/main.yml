@@ -1,0 +1,4 @@
+---
+- name: install roxterm files
+  copy: dest=~/.config/roxterm.sourceforge.net/
+        src=./

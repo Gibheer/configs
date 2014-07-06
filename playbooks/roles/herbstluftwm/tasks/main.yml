@@ -10,6 +10,7 @@
 - name: install main hlwm config
   copy: dest={{ hlwm_config }}/autostart
         src=autostart
+        mode=744
 
 - name: install config source files
   copy: dest={{ hlwm_config }}/source.d/

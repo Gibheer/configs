@@ -3,10 +3,11 @@
     ansible_python_interpreter: /usr/bin/python2.7
   roles:
     - conky
+    - herbstluftwm
     - psql
     - vim
     - xmodmap
     - xorg
     - zsh
-  tasks:
-    - include: tasks/dotfiles.yml
+#  tasks:
+    #    - include: tasks/dotfiles.yml

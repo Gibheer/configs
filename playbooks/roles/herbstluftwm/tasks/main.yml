@@ -1,0 +1,16 @@
+---
+- name: create config directory
+  file: dest={{ hlwm_config }}
+        state=directory
+
+- name: create source directory
+  file: dest={{ hlwm_config }}/source.d
+        state=directory
+
+- name: install main hlwm config
+  copy: dest={{ hlwm_config }}/autostart
+        src=autostart
+
+- name: install config source files
+  copy: dest={{ hlwm_config }}/source.d/
+        src=source.d/

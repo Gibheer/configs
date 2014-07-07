@@ -37,6 +37,6 @@ if [ "$TERM" = "xterm" ]; then
 fi
 
 # load further settings from profile directory
-for f in $(find ~/.profile.d/); do
+for f in $( find ~/.profile.d/ -type f ); do
   source "$f"
 done

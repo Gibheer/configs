@@ -1,0 +1,11 @@
+---
+- name: create jail.d directory
+  sudo: yes
+  file: dest=/etc/jail
+        state=directory
+        mode=755
+
+- name: install jails.conf to define jails
+  sudo: yes
+  template: dest=/etc/jail/jail.conf
+             src=jail.conf

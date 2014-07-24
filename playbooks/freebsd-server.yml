@@ -2,9 +2,8 @@
   vars:
     ansible_python_interpreter: /usr/local/bin/python2.7
   roles:
+    - { role: jails, when: ansible_nodename == 'enceladus' }
     - psql
     - tmux
     - vim
     - zsh
-  tasks:
-    - include: tasks/dotfiles.yml

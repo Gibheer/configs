@@ -1,0 +1,7 @@
+---
+jails:
+  foo:
+    settings:
+      host.hostname: "foo"
+    flags:
+      - allow.raw_sockets

@@ -1,4 +1,24 @@
 ---
+- name: create base jail zfs partition
+  sudo: yes
+  zfs: name=rpool/jails
+       mountpoint=/jails
+       compression=lz4
+       state=present
+
+- name: create jail zfs partitions
+  sudo: yes
+  zfs: name=rpool/jails/{{ item.key }}
+       state=present
+       jailed={{ item.value.zfs_flags.jailed | default(off) }}
+  with_dict: jails
+
+- name: remove old jail partitions
+  sudo: yes
+  zfs: name=rpool/jails/{{ item }}
+       state=absent
+  with_items: blacklist
+
 - name: create jail.d directory
   sudo: yes
   file: dest=/etc/jail

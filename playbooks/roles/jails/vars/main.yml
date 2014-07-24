@@ -5,3 +5,7 @@ jails:
       host.hostname: "foo"
     flags:
       - allow.raw_sockets
+    zfs_flags:
+      jailed: "on"
+
+blacklist: []

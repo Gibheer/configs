@@ -1,0 +1,16 @@
+[user]
+  email = gibheer@gmail.com
+  name = Gibheer
+
+[github]
+  user = Gibheer
+
+[color]
+  ui = auto
+
+[log]
+  decorate = full
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+  default = simple

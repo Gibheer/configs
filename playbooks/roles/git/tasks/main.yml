@@ -1,0 +1,5 @@
+---
+- name: role out git config
+  copy: dest=~/.gitconfig
+        src=gitconfig
+        mode=700

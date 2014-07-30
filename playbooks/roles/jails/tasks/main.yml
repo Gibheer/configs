@@ -6,6 +6,28 @@
        compression=lz4
        state=present
 
+- name: compile world to create jail template
+  sudo: yes
+  command: "{{ item.command }}"
+  args:
+    chdir:   /usr/src
+    creates: "{{ item.creates }}"
+  with_items:
+    - { command: "make buildworld -j12", creates: "/usr/obj/usr" }
+    - { command: "make buildkernel -j12", creates: "/usr/obj/usr/src/sys/GENERIC" }
+
+- name: create template directory
+  sudo: yes
+  zfs: name=rpool/jails/template
+       state=present
+
+- name: create jail template directory
+  sudo: yes
+  command: "make installworld DESTDIR=/jails/template"
+  args:
+    chdir:   /usr/src
+    creates: /jails/template/COPYRIGHT
+
 - name: create jail zfs partitions
   sudo: yes
   zfs: name=rpool/jails/{{ item.key }}
@@ -19,7 +41,7 @@
        state=absent
   with_items: blacklist
 
-- name: create jail.d directory
+- name: create jail config directory
   sudo: yes
   file: dest=/etc/jail
         state=directory
